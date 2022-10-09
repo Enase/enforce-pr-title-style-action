@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import { EventPayloads } from "@octokit/webhooks";
+// import { EventPayloads } from "@octokit/webhooks";
 
 async function run() {
     try {
@@ -32,7 +32,7 @@ export function getRegex() {
         if (!/(?<=^|[a-z]\-|[\s\p{Punct}&&[^\-]])([A-Z][A-Z0-9_]*)/.test(projectKey)) {
             throw new Error(`Project Key  "${projectKey}" is invalid`)
         }
-        regex = new RegExp(`(^${projectKey}-){1}(\\d)+(\\s)+(.)+`);
+        regex = new RegExp(`(^${projectKey}-){1}(\\d)+[:]?(\\s)+(.)+`);
     }
     return regex;
 }
